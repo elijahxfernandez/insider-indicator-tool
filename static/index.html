@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f5">
+  <title>Ownership — Insider intelligence</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="Ownership home"><span class="brand-mark">o<span>↗</span></span> ownership<span class="brand-period">.</span></a><span class="top-tag">THE INSIDER PERSPECTIVE</span><span class="review-label"><i></i> Research workspace</span></header>
+  <div class="workspace">
+    <aside class="sidebar">
+      <p class="eyebrow">YOUR WORKSPACE</p>
+      <a class="nav-item selected" href="#analysis"><span>◫</span> Overview <span class="nav-arrow">↗</span></a>
+      <a class="nav-item" href="#evidence"><span>≡</span> Evidence feed</a>
+      <a class="nav-item" href="#methodology"><span>◎</span> Methodology</a>
+      <div class="watchlist"><p class="eyebrow">COVERAGE <span>01</span></p><div class="watch-row"><span class="coin-icon small">C</span><div><strong>COIN</strong><small>Coinbase</small></div><span class="watch-dot"></span></div><p class="sidebar-note">One company. A closer look.<br>More tickers are on the roadmap.</p></div>
+      <div class="sidebar-bottom"><span class="tiny-mark">↗</span><strong>Follow the evidence.</strong><p>Ownership activity, with the context that matters.</p><span class="version">RESEARCH BUILD · V0.1</span></div>
+    </aside>
+    <main id="analysis">
+      <div class="page-heading"><div><p class="eyebrow">INSIDER INTELLIGENCE</p><h1>Behind the holdings.</h1><p class="subtitle">A clearer view of who owns, who buys, and what’s missing.</p></div><button id="download" class="button secondary" disabled>Export report <span>↗</span></button></div>
+      <form id="analysis-form" class="controls">
+        <label>Company<select id="ticker" name="ticker"><option value="COIN">COIN · Coinbase</option></select></label>
+        <label>Prior quarter end<input id="previous_period" name="previous_period" type="date" required></label>
+        <label>Quarter end<input id="current_period" name="current_period" type="date" required></label>
+        <label>Filings through<input id="as_of" name="as_of" type="date" required></label>
+        <button id="refresh" class="button primary" type="submit"><span>↻</span> Refresh analysis</button>
+      </form>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <div class="main-grid">
+        <section class="analysis-column">
+          <article class="signal-card">
+            <div class="signal-top"><div class="company-lockup"><span class="coin-icon">C</span><div><strong>Coinbase</strong><span>COIN · Ownership analysis</span></div></div><span id="coverage-badge" class="badge">AWAITING ANALYSIS</span></div>
+            <p class="eyebrow signal-caption">THE OWNERSHIP READ</p>
+            <h2 id="signal">Start with the evidence.</h2>
+            <p id="signal-description" class="signal-description">Run an analysis to bring insider filings, ownership context, and price into one view.</p>
+            <div class="direction-strip" aria-label="Evidence directions"><div><small>PRICE</small><strong id="price-direction">—</strong></div><span class="connector">/</span><div><small>INSIDERS</small><strong id="insider-direction">—</strong></div><span class="connector">/</span><div><small>INSTITUTIONS</small><strong id="institution-direction">—</strong></div></div>
+            <div class="signal-bottom"><span id="period-caption">No report loaded</span><span>OBSERVATION, NOT A FORECAST ↗</span></div>
+          </article>
+          <div class="metric-grid">
+            <article class="metric"><div class="metric-title">Quarter price change <span>↗</span></div><strong id="price-value">—</strong><small id="price-note">Awaiting price data</small></article>
+            <article class="metric"><div class="metric-title">Net insider activity <span>⇄</span></div><strong id="net-value">—</strong><small id="net-note">Reported P purchases minus sales</small></article>
+            <article class="metric"><div class="metric-title">P purchases <span>＋</span></div><strong id="purchase-value">—</strong><small id="purchase-note">Awaiting purchase data</small></article>
+          </div>
+          <section id="evidence" class="feed-section"><div class="section-heading"><div><p class="eyebrow">LOOK CLOSER</p><h2>The evidence feed</h2></div><span id="feed-count" class="subtle-label">4 connected layers</span></div>
+            <div class="tabs" role="tablist" aria-label="Evidence view"><button id="tab-overview" class="tab active" role="tab" aria-selected="true" aria-controls="panel-overview" data-tab="overview">Overview</button><button id="tab-purchases" class="tab" role="tab" aria-selected="false" aria-controls="panel-purchases" data-tab="purchases" tabindex="-1">P purchases</button><button id="tab-coverage" class="tab" role="tab" aria-selected="false" aria-controls="panel-coverage" data-tab="coverage" tabindex="-1">Data coverage</button></div>
+            <div id="panel-overview" role="tabpanel" aria-labelledby="tab-overview"><div id="feed" class="feed"><div class="empty-state"><span>◎</span><h3>Your evidence starts here.</h3><p>Refresh the analysis to inspect the filings behind the classification. Missing data will stay visible.</p></div></div></div>
+            <div id="panel-purchases" role="tabpanel" aria-labelledby="tab-purchases" hidden><div id="purchases-content" class="panel-content"><p>Purchase detail appears after analysis.</p></div></div>
+            <div id="panel-coverage" role="tabpanel" aria-labelledby="tab-coverage" hidden><div id="coverage-content" class="panel-content"><p>Source status and freshness appear after analysis.</p></div></div>
+          </section>
+        </section>
+        <aside class="context-column">
+          <section class="context-card coverage-card"><p class="eyebrow">THE FULL PICTURE</p><h3>Know what’s included.</h3><p class="muted">A clear conclusion starts with clear coverage.</p><div id="coverage-list"><div class="coverage-row"><span>Form 3 <small>Ownership baseline</small></span><span class="status-pill">Pending</span></div><div class="coverage-row"><span>Form 4 <small>Insider activity</small></span><span class="status-pill">Pending</span></div><div class="coverage-row"><span>13F <small>Institutional holdings</small></span><span class="status-pill">Pending</span></div><div class="coverage-row"><span>Price <small>Quarter context</small></span><span class="status-pill">Pending</span></div></div><div id="coverage-note" class="coverage-note">A missing layer is a gap to inspect, never a zero to assume.</div></section>
+          <section class="context-card" id="methodology"><p class="eyebrow">HOW TO READ IT</p><h3>Five states. One lens.</h3><dl class="state-guide"><div><dt><span class="guide-dot green"></span>Positive divergence</dt><dd>Price falls; observed ownership activity rises.</dd></div><div><dt><span class="guide-dot red"></span>Negative divergence</dt><dd>Price rises; observed ownership activity falls.</dd></div><div><dt><span class="guide-dot blue"></span>Confirmation</dt><dd>Price and ownership activity align in direction.</dd></div><div><dt><span class="guide-dot green"></span>Quiet accumulation</dt><dd>Ownership activity rises while price stays within the flat band.</dd></div><div><dt><span class="guide-dot gray"></span>Mixed/neutral</dt><dd>The measured directions do not form an aligned pattern.</dd></div></dl><p class="method-note">Price flat band: less than ±2%. Partial analysis uses Form 4 and price. Form 3 and P-purchase detail add context, not extra votes.</p></section>
+        </aside>
+      </div>
+      <footer><span>Built on Massive filing &amp; price data.</span><span>Descriptive research · No personalized advice</span></footer>
+    </main>
+  </div>
+</body>
+</html>
